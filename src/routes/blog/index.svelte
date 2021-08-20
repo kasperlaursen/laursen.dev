@@ -1,8 +1,6 @@
 <script lang="ts" context="module">
 	import type { PostMetadata } from './posts.json';
-	import { themeColor } from '$lib/themeStore';
 	export async function load({ fetch }) {
-		themeColor.set('green');
 		const res = await fetch(`/blog/posts.json`);
 		const { posts }: { posts: PostMetadata[] } = await res.json();
 		return {

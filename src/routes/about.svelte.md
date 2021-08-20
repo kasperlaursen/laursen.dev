@@ -1,7 +1,13 @@
 ---
-layout: post
+layout: boxed
 title: 'About'
 ---
+
+<script>
+	import Theme from '$lib/theme.svelte';
+</script>
+
+<Theme color="purple" header="large" />
 
 # Hi! I'm Kasper Laursen 👋
 

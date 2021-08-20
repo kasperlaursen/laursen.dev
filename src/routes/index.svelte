@@ -1,11 +1,7 @@
 <script lang="ts" context="module">
 	import type { PostMetadata } from './blog/posts.json';
 
-	import { themeColor, headerSize } from '$lib/themeStore';
-
 	export async function load({ fetch }) {
-		themeColor.set('red');
-		headerSize.set('large');
 		const res = await fetch(`/blog/posts.json`);
 		const { posts }: { posts: PostMetadata[] } = await res.json();
 		return {
@@ -17,10 +13,13 @@
 <script lang="ts">
 	import PostItem from '$lib/PostItem.svelte';
 	import SmartHomeCard from '$lib/smarthome/SmartHomeCard.svelte';
+	import Theme from '$lib/theme.svelte';
 	import LinkButton from '$lib/ui-components/LinkButton.svelte';
 	export let posts: PostMetadata[];
 	const postLimit = 3;
 </script>
+
+<Theme color="red" header="large" />
 
 <section class="posts">
 	<h2 class="heading">Recent Posts:</h2>

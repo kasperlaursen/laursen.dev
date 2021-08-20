@@ -5,7 +5,9 @@ const config = {
 		dashes: 'oldschool'
 	},
 
-	layout: {},
+	layout: {
+		boxed: './src/routes/_layouts/_boxed.svelte'
+	},
 
 	remarkPlugins: [],
 	rehypePlugins: []

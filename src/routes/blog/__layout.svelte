@@ -1,19 +1,17 @@
 <script lang="ts">
-	import { themeColor, headerSize } from '$lib/themeStore';
+	import Theme from '$lib/theme.svelte';
+	import BoxedLayout from '../_layouts/_boxed.svelte';
 
 	export let title;
-
-	themeColor.set('green');
-	headerSize.set('large');
 </script>
 
 <svelte:head>
 	<title>{title} | ProgrammingTIL</title>
 </svelte:head>
-
-<article>
+<Theme color="green" header="large" />
+<BoxedLayout>
 	<slot />
-</article>
+</BoxedLayout>
 
 <style>
 	article {
