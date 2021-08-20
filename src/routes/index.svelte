@@ -19,6 +19,10 @@
 	const postLimit = 3;
 </script>
 
+<svelte:head>
+	<title>Home | Kasper Laursen</title>
+</svelte:head>
+
 <Theme color="red" header="large" />
 
 <section class="posts">

@@ -9,6 +9,11 @@ title: 'About'
 
 <Theme color="purple" header="large" />
 
+<svelte:head>
+
+<title>About | Kasper Laursen</title>
+</svelte:head>
+
 # Hi! I'm Kasper Laursen 👋
 
 I'm a Web Developer living in Denmark 🇩🇰 working as a Software Engineer.  

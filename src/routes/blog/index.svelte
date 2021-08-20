@@ -14,6 +14,10 @@
 	export let posts: PostMetadata[];
 </script>
 
+<svelte:head>
+	<title>Blog | Kasper Laursen</title>
+</svelte:head>
+
 <h2 class="heading">Blog</h2>
 {#each posts as post}
 	<PostItem {post} />

@@ -4,9 +4,6 @@
 	import { themeColor } from '$lib/themeStore';
 </script>
 
-<svelte:head>
-	<title>Kasper Laursen</title>
-</svelte:head>
 <div class={$themeColor}>
 	<Nav />
 	<main>
