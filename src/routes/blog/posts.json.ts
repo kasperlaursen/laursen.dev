@@ -1,8 +1,8 @@
 export enum PostCategory {
-	MAKING = 'making',
-	CODING = 'coding',
-	HOMEAUTOMATION = 'home automation',
-	OTHER = 'other'
+	MAKING = 'Making',
+	CODING = 'Coding',
+	HOMEAUTOMATION = 'Home Automation',
+	OTHER = 'Other'
 }
 export interface PostMetadata {
 	title: string;
@@ -13,7 +13,7 @@ export interface Post extends PostMetadata {
 	slug: string;
 }
 
-interface Category {
+export interface Category {
 	category: PostCategory;
 	count: number;
 }

@@ -18,7 +18,7 @@
 		position: relative;
 		padding: 2em;
 
-		height: 200px;
+		height: 12em;
 	}
 
 	h3 {

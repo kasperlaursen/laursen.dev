@@ -1,7 +1,7 @@
 ---
 title: 'This fishing wheel is 100% 3D printed'
 teaser: 'Is it really possible to 3D print a fully working fishing Wheel?'
-categories: ['making', 'other']
+categories: ['Making', 'Other']
 ---
 
 <svelte:head>

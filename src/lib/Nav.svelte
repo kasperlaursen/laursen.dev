@@ -45,7 +45,7 @@
 	}
 
 	header.large {
-		height: 150px;
+		height: 10em;
 	}
 
 	header {
