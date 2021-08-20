@@ -5,9 +5,7 @@ const config = {
 		dashes: 'oldschool'
 	},
 
-	layout: {
-		post: './src/routes/_postLayout.svelte'
-	},
+	layout: {},
 
 	remarkPlugins: [],
 	rehypePlugins: []

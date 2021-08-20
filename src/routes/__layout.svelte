@@ -1,8 +1,20 @@
+<script lang="ts">
+	import '../../static/global.css';
+	import Nav from '$lib/Nav.svelte';
+	import { themeColor } from '$lib/themeStore';
+</script>
 
-<nav>
-	<a href="/">Home</a>
-	<a href="/about">About</a>
-	<a href="/settings">Settings</a>
-</nav>
+<div class={$themeColor}>
+	<Nav />
+	<main>
+		<slot />
+	</main>
+</div>
 
-<slot></slot>
+<style>
+	main {
+		margin: auto;
+		max-width: var(--content-width);
+		padding: 1rem;
+	}
+</style>
