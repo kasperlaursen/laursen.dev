@@ -1,17 +1,17 @@
 <script lang="ts" context="module">
-	import type { PostMetadata } from './posts.json';
+	import type { Post, ResponseBody } from './posts.json';
 	export async function load({ fetch }) {
 		const res = await fetch(`/blog/posts.json`);
-		const { posts }: { posts: PostMetadata[] } = await res.json();
+		const { posts, categories }: ResponseBody = await res.json();
 		return {
-			props: { posts }
+			props: { posts, categories }
 		};
 	}
 </script>
 
 <script lang="ts">
 	import PostItem from '$lib/PostItem.svelte';
-	export let posts: PostMetadata[];
+	export let posts: Post[];
 </script>
 
 <svelte:head>

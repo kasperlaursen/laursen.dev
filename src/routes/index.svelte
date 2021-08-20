@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-	import type { PostMetadata } from './blog/posts.json';
+	import type { Post, ResponseBody } from './blog/posts.json';
 
 	export async function load({ fetch }) {
 		const res = await fetch(`/blog/posts.json`);
-		const { posts }: { posts: PostMetadata[] } = await res.json();
+		const { posts }: ResponseBody = await res.json();
 		return {
 			props: { posts }
 		};
@@ -15,7 +15,7 @@
 	import HomeAutomationCard from '$lib/homeautomation/HomeAutomationCard.svelte';
 	import Theme from '$lib/theme.svelte';
 	import LinkButton from '$lib/ui-components/LinkButton.svelte';
-	export let posts: PostMetadata[];
+	export let posts: Post[];
 	const postLimit = 3;
 </script>
 

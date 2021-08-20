@@ -1,5 +1,6 @@
-<script>
-	export let post;
+<script lang="ts">
+	import type { Post } from '../routes/blog/posts.json';
+	export let post: Post;
 </script>
 
 <div>
