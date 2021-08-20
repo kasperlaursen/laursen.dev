@@ -1,33 +1,33 @@
 <ul class="circles">
 	<li>
-		<img src="/static/homeassistant.svg" alt="Home Assistant logo" />
+		<img src="/homeassistant.svg" alt="Home Assistant logo" />
 	</li>
 	<li>
-		<img src="/static/raspberry-pi.svg" alt="Raspberry PI logo" />
+		<img src="/raspberry-pi.svg" alt="Raspberry PI logo" />
 	</li>
 	<li>
-		<img src="/static/raspberry-pi.svg" alt="Raspberry PI logo" />
+		<img src="/raspberry-pi.svg" alt="Raspberry PI logo" />
 	</li>
 	<li>
-		<img src="/static/raspberry-pi.svg" alt="Raspberry PI logo" />
+		<img src="/raspberry-pi.svg" alt="Raspberry PI logo" />
 	</li>
 	<li>
-		<img src="/static/raspberry-pi.svg" alt="Raspberry PI logo" />
+		<img src="/raspberry-pi.svg" alt="Raspberry PI logo" />
 	</li>
 	<li>
-		<img src="/static/EspHome.svg" alt="Esp Home logo" />
+		<img src="/EspHome.svg" alt="Esp Home logo" />
 	</li>
 	<li>
-		<img src="/static/homeassistant.svg" alt="Home Assistant logo" />
+		<img src="/homeassistant.svg" alt="Home Assistant logo" />
 	</li>
 	<li>
-		<img src="/static/zigbee.svg" alt="Home Assistant logo" />
+		<img src="/zigbee.svg" alt="Home Assistant logo" />
 	</li>
 	<li>
-		<img src="/static/zigbee.svg" alt="Zigbee logo" />
+		<img src="/zigbee.svg" alt="Zigbee logo" />
 	</li>
 	<li>
-		<img src="/static/EspHome.svg" alt="Esp Home logo" />
+		<img src="/EspHome.svg" alt="Esp Home logo" />
 	</li>
 </ul>
 
