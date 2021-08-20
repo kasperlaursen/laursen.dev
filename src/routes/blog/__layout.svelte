@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>{title} | ProgrammingTIL</title>
+	<title>{title} | Kasper Laursen</title>
 </svelte:head>
 <Theme color="green" header="large" />
 <BoxedLayout>

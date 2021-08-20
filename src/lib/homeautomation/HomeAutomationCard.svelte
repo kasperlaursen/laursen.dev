@@ -1,10 +1,10 @@
 <script>
-	import AnimatedSmartHomeBackground from './AnimatedSmartHomeBackground.svelte';
+	import AnimatedHomeAutomationBackground from './AnimatedHomeAutomationBackground.svelte';
 </script>
 
-<a href="/smarthome">
-	<h3>My Smart Home Setup</h3>
-	<AnimatedSmartHomeBackground />
+<a href="/homeautomation">
+	<h3>My Home Automation Setup</h3>
+	<AnimatedHomeAutomationBackground />
 </a>
 
 <style>

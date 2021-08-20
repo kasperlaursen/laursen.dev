@@ -12,7 +12,7 @@
 
 <script lang="ts">
 	import PostItem from '$lib/PostItem.svelte';
-	import SmartHomeCard from '$lib/smarthome/SmartHomeCard.svelte';
+	import HomeAutomationCard from '$lib/homeautomation/HomeAutomationCard.svelte';
 	import Theme from '$lib/theme.svelte';
 	import LinkButton from '$lib/ui-components/LinkButton.svelte';
 	export let posts: PostMetadata[];
@@ -31,7 +31,7 @@
 </section>
 
 <section class="subpages">
-	<SmartHomeCard />
+	<HomeAutomationCard />
 </section>
 
 <style>
