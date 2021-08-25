@@ -1,87 +1,140 @@
 <script>
+	import * as d3 from 'd3';
 	import { onMount } from 'svelte';
-  import * as d3 from 'd3';
-	import { drag } from 'd3-drag';
 
-export let data = {
-  name: "Home Assistant",
-  children: [{}]
-  };
+	export let data = {
+		name: 'Home Assistant',
+		children: [{}]
+	};
 
-let svg;
-let width = 500;
-let height = 600;
+	let svg;
+	let width = 1000 - 16 * 2;
+	let height = 800;
+  const nodeSize = 80;
+	const nodeRadius = nodeSize/2;
 
-// onMount(()=> {
-    const root = d3.hierarchy(data);
-    const links = root.links();
-    const nodes = root.descendants();
+	const root = d3.hierarchy(data);
 
-    const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(50).strength(1))
-        .force("charge", d3.forceManyBody().strength(-50))
-        .force("x", d3.forceX())
-        .force("y", d3.forceY());
+	$: links = root.links();
+	$: nodes = root.descendants();
 
-    const link = d3.select(svg).append("g")
-        .attr("stroke", "#999")
-        .attr("stroke-opacity", 0.6)
-      .selectAll("line")
-      .data(links)
-      .join("line");
+	let transform = d3.zoomIdentity;
+	let simulation;
 
-    const node = d3.select(svg).append("g")
-        .attr("fill", "#fff")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1.5)
-      .selectAll("circle")
-      .data(nodes)
-      .join("circle")
-        .attr("fill", d => d.children ? null : "#000")
-        .attr("stroke", d => d.children ? null : "#fff")
-        .attr("r", 10)
-        .call(drag(simulation));
+	onMount(() => {
+		simulation = d3
+			.forceSimulation(nodes)
+			.force(
+				'link',
+				d3
+					.forceLink(links)
+					.id((d) => d.id)
+					.distance(0)
+					.strength(1)
+			)
+			.force('charge', d3.forceManyBody().strength(-2500))
+			.force('center', d3.forceCenter(width / 2, height / 2))
+			.on('tick', simulationUpdate);
 
-    node.append("title")
-        .text(d => d.data.name);
+		d3.select(svg)
+			.call(
+				d3
+					.drag()
+					.container(svg)
+					.subject(dragsubject)
+					.on('start', dragstarted)
+					.on('drag', dragged)
+					.on('end', dragended)
+			)
+			.call(
+				d3
+					.zoom()
+					.scaleExtent([1 / 10, 8])
+					.on('zoom', zoomed)
+			);
+	});
 
-    simulation.on("tick", () => {
-      link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
+	function dragsubject(currentEvent) {
+		const node = simulation.find(
+			transform.invertX(currentEvent.x),
+			transform.invertY(currentEvent.y),
+			nodeRadius
+		);
+		if (node) {
+			node.x = transform.applyX(node.x);
+			node.y = transform.applyY(node.y);
+		}
+		return node;
+	}
 
-      node
-          .attr("cx", d => d.x)
-          .attr("cy", d => d.y);
-    });
+	function simulationUpdate() {
+		simulation.tick();
+		nodes = [...nodes];
+		links = [...links];
+	}
 
-    d3.invalidation.then(() => simulation.stop());
-  // });
+	function zoomed(currentEvent) {
+		transform = currentEvent.transform;
+		simulationUpdate();
+	}
+
+	function dragstarted(currentEvent) {
+		if (!currentEvent.active) simulation.alphaTarget(0.3).restart();
+		currentEvent.subject.fx = transform.invertX(currentEvent.subject.x);
+		currentEvent.subject.fy = transform.invertY(currentEvent.subject.y);
+	}
+	function dragged(currentEvent) {
+		currentEvent.subject.fx = transform.invertX(currentEvent.x);
+		currentEvent.subject.fy = transform.invertY(currentEvent.y);
+	}
+	function dragended(currentEvent) {
+		if (!currentEvent.active) simulation.alphaTarget(0);
+		currentEvent.subject.fx = null;
+		currentEvent.subject.fy = null;
+	}
+	function resize() {
+		({ width, height } = svg.getBoundingClientRect());
+	}
 </script>
-<!-- SVG was here -->
-<svg bind:this={svg} {width} {height} viewBox={`${-width / 2},${-height / 2},${width},${height}`}>
-  {#each links as link}
-  <g stroke='#999' stroke-opacity='0.6'>
-    <line x1='{link.source.x}' y1='{link.source.y}' 
-          x2='{link.target.x}' y2='{link.target.y}'
-          transform='translate({transform.x} {transform.y}) scale({transform.k} {transform.k})'>
-          <title>{link.source.id}</title>
-    </line>
-  </g>
-{/each}
 
-{#each nodes as point}
-  <circle class='node' r='5' fill='{colourScale(point.group)}' cx='{point.x}' cy='{point.y}'
-   transform='translate({transform.x} {transform.y}) scale({transform.k} {transform.k})'>
-  <title>{point.id}</title></circle>
-{/each}
+<!-- SVG was here --><svg bind:this={svg} {width} {height}>
+	{#each links as link}
+		<g stroke="#999" stroke-opacity="0.6">
+			<line x1={link.source.x} y1={link.source.y} x2={link.target.x} y2={link.target.y} />
+		</g>
+	{/each}
+
+	{#each nodes as node}
+		<foreignObject
+			x={node.x - nodeSize/2}
+			y={node.y - nodeSize/2}
+			height={nodeSize}
+			width={nodeSize}
+			class="circle"
+			style={`background: var(${node.data.color ?? '--red'})`}
+		>
+			<div>{node.data.name}</div>
+		</foreignObject>
+	{/each}
 </svg>
 
 <style>
-	circle {
-		stroke: #fff;
-    stroke-width: 1.5;
+	.circle {
+		border: 2px solid #fff;
+		background-color: var(--red);
+		border-radius: 50%;
+	}
+
+	.circle > div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+
+		text-align: center;
+		color: #fff;
+    font-size: .8em;
 	}
 </style>
