@@ -1,9 +1,7 @@
 <script context="module">
 	export async function load({ fetch }) {
 		const res = await fetch(`/homeautomation/structure.json`);
-		console.log(res);
 		const data = await res.json();
-		console.log(data);
 		return {
 			props: { data }
 		};
@@ -17,8 +15,9 @@
 
 <h1>Home Automation</h1>
 <p>
-	Thanks for visiting. <br />
-	Unfortunately this page is still a work in progress, check back later!
+	Thanks for visiting.  <br />
+	This page is still a <b>work in progress</b>, but below you see a diagram of my Home Automation setup!  <br />
+	Check back later for more!
 </p>
 <Diagram {data} />
 

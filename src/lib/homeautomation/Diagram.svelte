@@ -29,11 +29,11 @@
 				d3
 					.forceLink(links)
 					.id((d) => d.id)
-					.distance(0)
+					.distance(60)
 					.strength(1)
 			)
-			.force('charge', d3.forceManyBody().strength(-2500))
-			.force('center', d3.forceCenter(width / 2, height / 2))
+			.force('charge', d3.forceManyBody().strength(-700))
+			.force('center', d3.forceCenter(width / 2, height / 2).strength(0.5))
 			.on('tick', simulationUpdate);
 
 		d3.select(svg)
@@ -92,12 +92,14 @@
 		currentEvent.subject.fx = null;
 		currentEvent.subject.fy = null;
 	}
+
 	function resize() {
 		({ width, height } = svg.getBoundingClientRect());
 	}
 </script>
+<svelte:window on:resize='{resize}'/>
 
-<!-- SVG was here --><svg bind:this={svg} {width} {height}>
+<svg bind:this={svg} {height}>
 	{#each links as link}
 		<g stroke="#999" stroke-opacity="0.6">
 			<line x1={link.source.x} y1={link.source.y} x2={link.target.x} y2={link.target.y} />
@@ -113,12 +115,15 @@
 			class="circle"
 			style={`background: var(${node.data.color ?? '--red'})`}
 		>
-			<div>{node.data.name}</div>
+			<div>{node.data.name}{node.data.count ? ' (' + node.data.count + ')' : ''}</div>
 		</foreignObject>
 	{/each}
 </svg>
 
 <style>
+  svg {
+    width: 100%;
+  }
 	.circle {
 		border: 2px solid #fff;
 		background-color: var(--red);
@@ -135,6 +140,6 @@
 
 		text-align: center;
 		color: #fff;
-    font-size: .8em;
+    font-size: .7em;
 	}
 </style>
