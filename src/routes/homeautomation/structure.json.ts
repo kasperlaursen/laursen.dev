@@ -10,18 +10,19 @@ export const get = async () => {
 				{
 					name: 'ESP Home',
 					id: 'esphome',
-					color: "--purple",
+					color: "--teal",
 					type: 'integration',
 					children: [{
 						name: 'ESP32 BLE Hub',
-						count: 3,
 						id: 'esp32',
+						count: 3,
+						color: "--teal",
 						type: 'device',
 						children: [{
 							name: 'BLE Temp & Hum sensor',
+							id: 'bletemp',
 							count: 12,
-							color: "--green",
-							id: 'esp32',
+							color: "--teal",
 							type: 'device',
 						}]
 					}]
@@ -29,51 +30,54 @@ export const get = async () => {
 				{
 					name: 'PI Hole',
 					id: 'pihole',
-					color: "--purple",
+					color: "--gray",
 					type: 'integration'
 				},
 				{
 					name: 'HACS',
 					id: 'hacs',
-					color: "--purple",
+					color: "--gray",
 					type: 'integration'
 				},
 				{
 					name: 'Mobile App',
 					id: 'mobileapp',
-					color: "--purple",
+					color: "--gray",
 					type: 'integration'
 				},
 				{
 					name: 'Shelly',
 					id: 'shelly',
-					color: "--purple",
+					color: "--dark-gray",
 					type: 'integration',
 					children: [{
 						name: "Shelly 1",
 						id: "shelly1",
+						color: "--dark-gray",
 						type: "device"
 					}]
 				},
 				{
 					name: 'Xiaomi Miio',
 					id: 'xiaomimiio',
-					color: "--purple",
+					color: "--orange",
 					type: 'integration',
 					children: [{
 						name: 'Roborock s6 Vacuum',
 						id: 'roborocks6',
+						color: "--orange",
 						type: 'device',
 					}]
 				},
 				{
 					name: 'Sonos',
 					id: 'sonos',
-					color: "--purple",
+					color: "--dark-blue",
 					type: 'integration',
 					children: [{
 						name: 'IKEA SYMFONISK',
 						count: 2,
+						color: "--dark-blue",
 						id: 'symfonsik1',
 						type: 'device',
 					}]
@@ -86,62 +90,73 @@ export const get = async () => {
 					children: [{
 						name: 'Sony TV',
 						id: 'sonytv',
+						color: "--purple",
 						type: 'device',
 					}]
 				},
 				{
 					name: 'Zigbee Home Automation',
 					id: 'zha',
-					color: "--purple",
+					color: "--dark-green",
 					type: 'integration',
 					children: [{
 						name: "TRADFRI Lightbulb",
 						count: 6,
+						color: "--green",
 						id: 'ikeabulb',
 						type: 'device',
 					},{
 						name: "TRADFRI Switch",
 						count: 3,
+						color: "--green",
 						id: 'ikeaswitch',
 						type: 'device',
 					},{
 						name: "TRADFRI Remote",
 						count: 1,
+						color: "--green",
 						id: 'ikearemote',
 						type: 'device',
 					},{
 						name: "TRADFRI Outlet",
 						count: 4,
-						id: 'ikeabulb',
+						color: "--green",
+						id: 'ikeaoutlet',
 						type: 'device',
 					},{
 						name: "TRADFRI LED Driver",
 						count: 1,
+						color: "--green",
 						id: 'ikealed',
 						type: 'device',
 					},{
 						name: "Xiaomi Button",
 						count: 1,
+						color: "--green",
 						id: 'xiaomibutton',
 						type: 'device',
 					},{
 						name: "Xiaomi Cube",
 						count: 1,
+						color: "--green",
 						id: 'xiaomicube',
 						type: 'device',
 					},{
 						name: "Xiaomi Motion sensor",
 						count: 2,
+						color: "--green",
 						id: 'xiaomimotion',
 						type: 'device',
 					},{
 						name: "Xiaomi Temp/Hum sensor",
 						count: 3,
+						color: "--green",
 						id: 'xiaomitemp',
 						type: 'device',
 					},{
 						name: "Xiaomi Door sensor",
 						count: 3,
+						color: "--green",
 						id: 'xiaomidoor',
 						type: 'device',
 					}]
@@ -149,16 +164,18 @@ export const get = async () => {
 				{
 					name: 'IHC by Schneider Electric',
 					id: 'ihc',
-					color: "--purple",
+					color: "--red",
 					type: 'integration',
 					children: [{
 						name: 'Light Zone',
 						count: 25,
+						color: "--red",
 						id: 'ihclight',
 						type: 'device'
 					},{
 						name: 'Wall switch',
 						count: 5,
+						color: "--red",
 						id: 'ihcswitch',
 						type: 'device'
 					}]
@@ -166,7 +183,7 @@ export const get = async () => {
 				{
 					name: 'InfluxDB',
 					id: 'influxdb',
-					color: "--purple",
+					color: "--gray",
 					type: 'integration'
 				}
 			]

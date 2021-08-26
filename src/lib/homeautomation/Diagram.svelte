@@ -6,12 +6,12 @@
 		name: 'Home Assistant',
 		children: [{}]
 	};
+	export let width;
 
 	let svg;
-	let width = 1000 - 16 * 2;
-	let height = 800;
-  const nodeSize = 80;
-	const nodeRadius = nodeSize/2;
+	let height = 700;
+	const nodeSize = 80;
+	const nodeRadius = nodeSize / 2;
 
 	const root = d3.hierarchy(data);
 
@@ -21,6 +21,10 @@
 	let transform = d3.zoomIdentity;
 	let simulation;
 
+	$: {
+		simulation?.force('center', d3.forceCenter(width / 2, height / 2).strength(0.5));
+	}
+
 	onMount(() => {
 		simulation = d3
 			.forceSimulation(nodes)
@@ -29,29 +33,24 @@
 				d3
 					.forceLink(links)
 					.id((d) => d.id)
-					.distance(60)
-					.strength(1)
+					.distance(nodeSize)
+					.strength(0.5)
 			)
-			.force('charge', d3.forceManyBody().strength(-700))
+			.force('charge', d3.forceManyBody().strength(-300))
+			.force('collide', d3.forceCollide(nodeSize / 2).strength(0.4))
 			.force('center', d3.forceCenter(width / 2, height / 2).strength(0.5))
+			.force('y', d3.forceY(height / 2).strength(0.06))
 			.on('tick', simulationUpdate);
 
-		d3.select(svg)
-			.call(
-				d3
-					.drag()
-					.container(svg)
-					.subject(dragsubject)
-					.on('start', dragstarted)
-					.on('drag', dragged)
-					.on('end', dragended)
-			)
-			.call(
-				d3
-					.zoom()
-					.scaleExtent([1 / 10, 8])
-					.on('zoom', zoomed)
-			);
+		d3.select(svg).call(
+			d3
+				.drag()
+				.container(svg)
+				.subject(dragsubject)
+				.on('start', dragstarted)
+				.on('drag', dragged)
+				.on('end', dragended)
+		);
 	});
 
 	function dragsubject(currentEvent) {
@@ -93,13 +92,23 @@
 		currentEvent.subject.fy = null;
 	}
 
-	function resize() {
-		({ width, height } = svg.getBoundingClientRect());
+	function selectSubtree(node) {
+    console.log(d3.select('#' + node.data.id))
+		d3.select('#' + node.data.id).classed('highlight', true);
+		if (node.children) {
+			node.children.forEach(selectSubtree);
+		}
+	}
+
+	function deselectSubtree(node) {
+		d3.select('#' + node.data.id).classed('highlight', false);
+		if (node.children) {
+			node.children.forEach(deselectSubtree);
+		}
 	}
 </script>
-<svelte:window on:resize='{resize}'/>
 
-<svg bind:this={svg} {height}>
+<svg bind:this={svg} {height} {width}>
 	{#each links as link}
 		<g stroke="#999" stroke-opacity="0.6">
 			<line x1={link.source.x} y1={link.source.y} x2={link.target.x} y2={link.target.y} />
@@ -108,26 +117,35 @@
 
 	{#each nodes as node}
 		<foreignObject
-			x={node.x - nodeSize/2}
-			y={node.y - nodeSize/2}
+			id={node.data.id}
+			on:mouseenter={() => selectSubtree(node)}
+			on:mouseleave={() => deselectSubtree(node)}
+			x={node.x ? node.x - nodeSize / 2 : 0}
+			y={node.y ? node.y - nodeSize / 2 : 0}
 			height={nodeSize}
 			width={nodeSize}
 			class="circle"
-			style={`background: var(${node.data.color ?? '--red'})`}
+			class:highlight={node.data.highlight}
+			style={`--element-bg-color: var(${node.data.color ?? '--gray'})`}
 		>
-			<div>{node.data.name}{node.data.count ? ' (' + node.data.count + ')' : ''}</div>
+			<div>
+				<a href="/blog/">{node.data.name}{node.data.count ? ' (' + node.data.count + ')' : ''}</a>
+			</div>
 		</foreignObject>
 	{/each}
 </svg>
 
 <style>
-  svg {
-    width: 100%;
-  }
 	.circle {
 		border: 2px solid #fff;
-		background-color: var(--red);
+		background-color: var(--element-bg-color);
 		border-radius: 50%;
+		cursor: grab;
+		transition: all 0.2s;
+	}
+	.circle:hover,
+	.circle.highlight {
+		border: 2px solid var(--dark-gray);
 	}
 
 	.circle > div {
@@ -140,6 +158,18 @@
 
 		text-align: center;
 		color: #fff;
-    font-size: .7em;
+		font-size: 0.7em;
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: none;
+		color: #fff;
+		transition: all 0.2s;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		font-weight: bold;
 	}
 </style>
