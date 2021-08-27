@@ -20,8 +20,7 @@
 <p>
 	Thanks for visiting. <br />
 	This page is still a <b>work in progress</b>, but below you see a diagram of my Home Automation
-	setup! <br />
-	Check back later for more!
+	setup!
 </p>
 
 <Card spacing="none">
