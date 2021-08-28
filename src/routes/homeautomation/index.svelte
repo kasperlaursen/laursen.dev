@@ -9,7 +9,7 @@
 </script>
 
 <script>
-	import Diagram from '$lib/homeautomation/Diagram.svelte';
+	import Diagram from '$lib/homeautomation/Diagram/Diagram.svelte';
 	import Card from '$lib/Card.svelte';
 	export let data;
 

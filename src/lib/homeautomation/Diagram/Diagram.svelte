@@ -1,5 +1,7 @@
 <script>
 	import * as d3 from 'd3';
+	import Nodes from '$lib/homeautomation/Diagram/Nodes.svelte';
+	import Links from '$lib/homeautomation/Diagram/Links.svelte';
 	import { onMount } from 'svelte';
 
 	export let data = {
@@ -72,20 +74,17 @@
 		links = [...links];
 	}
 
-	function zoomed(currentEvent) {
-		transform = currentEvent.transform;
-		simulationUpdate();
-	}
-
 	function dragstarted(currentEvent) {
 		if (!currentEvent.active) simulation.alphaTarget(0.3).restart();
 		currentEvent.subject.fx = transform.invertX(currentEvent.subject.x);
 		currentEvent.subject.fy = transform.invertY(currentEvent.subject.y);
 	}
+
 	function dragged(currentEvent) {
 		currentEvent.subject.fx = transform.invertX(currentEvent.x);
 		currentEvent.subject.fy = transform.invertY(currentEvent.y);
 	}
+
 	function dragended(currentEvent) {
 		if (!currentEvent.active) simulation.alphaTarget(0);
 		currentEvent.subject.fx = null;
@@ -93,7 +92,7 @@
 	}
 
 	function selectSubtree(node) {
-    console.log(d3.select('#' + node.data.id))
+		console.log(d3.select('#' + node.data.id));
 		d3.select('#' + node.data.id).classed('highlight', true);
 		if (node.children) {
 			node.children.forEach(selectSubtree);
@@ -109,67 +108,6 @@
 </script>
 
 <svg bind:this={svg} {height} {width}>
-	{#each links as link}
-		<g stroke="#999" stroke-opacity="0.6">
-			<line x1={link.source.x} y1={link.source.y} x2={link.target.x} y2={link.target.y} />
-		</g>
-	{/each}
-
-	{#each nodes as node}
-		<foreignObject
-			id={node.data.id}
-			on:mouseenter={() => selectSubtree(node)}
-			on:mouseleave={() => deselectSubtree(node)}
-			x={node.x ? node.x - nodeSize / 2 : 0}
-			y={node.y ? node.y - nodeSize / 2 : 0}
-			height={nodeSize}
-			width={nodeSize}
-			class="circle"
-			class:highlight={node.data.highlight}
-			style={`--element-bg-color: var(${node.data.color ?? '--gray'})`}
-		>
-			<div>
-				<a href="/blog/">{node.data.name}{node.data.count ? ' (' + node.data.count + ')' : ''}</a>
-			</div>
-		</foreignObject>
-	{/each}
+	<Links {links} />
+	<Nodes {nodes} {nodeSize} onMouseEnter={selectSubtree} onMouseLeave={deselectSubtree} />
 </svg>
-
-<style>
-	.circle {
-		border: 2px solid #fff;
-		background-color: var(--element-bg-color);
-		border-radius: 50%;
-		cursor: grab;
-		transition: all 0.2s;
-	}
-	.circle:hover,
-	.circle.highlight {
-		border: 2px solid var(--dark-gray);
-	}
-
-	.circle > div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		width: 100%;
-		height: 100%;
-
-		text-align: center;
-		color: #fff;
-		font-size: 0.7em;
-	}
-
-	a {
-		cursor: pointer;
-		text-decoration: none;
-		color: #fff;
-		transition: all 0.2s;
-	}
-
-	a:hover {
-		text-decoration: underline;
-		font-weight: bold;
-	}
-</style>
