@@ -13,4 +13,8 @@
 		position: relative;
 		padding: 3em;
 	}
+	article :global(p) {
+		margin-bottom: 0.4em;
+		line-height: 1.5;
+	}
 </style>
