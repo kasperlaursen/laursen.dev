@@ -5,9 +5,14 @@
 
 <div>
 	<a href="/blog/{post.slug}">
-		<h3>{post.title}</h3>
-		<p>{post.teaser}</p>
-		<p class="cta">Read full post</p>
+		<div>
+			<h3>{post.title}</h3>
+			<p>{post.teaser}</p>
+			<p class="cta">Read full post</p>
+		</div>
+		{#if post.image }
+			<img src={post.image} alt={post.title}/>
+		{/if}
 	</a>
 </div>
 
@@ -16,6 +21,14 @@
 		text-decoration: none;
 		color: var(--text-color);
 		transition: color 0.2s ease-in-out;
+		display: flex;
+		justify-content: space-between;
+		gap:  1em;
+	}
+
+	img {
+		max-width: 200px;
+		max-height: 100px;
 	}
 
 	div {
