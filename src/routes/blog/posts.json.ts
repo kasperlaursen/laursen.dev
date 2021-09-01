@@ -7,6 +7,8 @@ export enum PostCategory {
 export interface PostMetadata {
 	title: string;
 	teaser: string;
+	date: Date;
+	image?: string;
 	categories?: PostCategory[];
 }
 export interface Post extends PostMetadata {
@@ -33,7 +35,9 @@ export const get = async (): Promise<{
 			const slug = path.split('/').pop().split('.').shift();
 			return { ...metadata, slug };
 		})
-	);
+	)
+
+	posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
 	return {
 		status: 200,
