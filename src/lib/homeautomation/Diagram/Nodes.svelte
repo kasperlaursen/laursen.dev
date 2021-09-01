@@ -53,11 +53,14 @@
 	}
 
 	a {
-		cursor: pointer;
 		text-decoration: none;
 		color: #fff;
 		transition: all 0.2s;
 	}
+
+    a[href]{
+		cursor: pointer;
+    }
 
 	a[href]:hover {
 		text-decoration: underline;
