@@ -10,7 +10,7 @@ categories: ['Making', 'Other']
 <title>{title} | Kasper Laursen</title>
 </svelte:head>
 
-# 3D Pritned wall mount for Xiaomi Temperature sensors
+# 3D Printed wall mount for Xiaomi Temperature sensors
 
 Some time ago I bought a bunch of these cheap Xiaomi Bluetooth Temperature and Humidity sensors.  
 We wanted to mount them on the walls in each room in the house but didn't want to drill any holes.   
