@@ -15,7 +15,7 @@ categories: ['Making', 'Other']
 Some time ago I bought a bunch of these cheap Xiaomi Bluetooth Temperature and Humidity sensors.  
 We wanted to mount them on the walls in each room in the house but didn't want to drill any holes.   
 
-The easy solution would be just taping them directly to the wall, but they needed to be taken down for battery change...   
+The easy solution would be just tapeing them directly to the wall, but they needed to be taken down for battery change...   
  
 To solve this I designed a simple mount for the sensors!   
 
