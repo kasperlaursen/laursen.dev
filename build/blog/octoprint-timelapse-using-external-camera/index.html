@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>How to use an external camera in octoprint | Kasper Laursen</title>
+
+		
+
+		<link rel="modulepreload" href="/_app/start-9c372ffb.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-d4c6ea5c.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-83329d77.js">
+		<link rel="modulepreload" href="/_app/chunks/LinkButton-fbbacee9.js">
+		<link rel="modulepreload" href="/_app/chunks/themeStore-42b42041.js">
+		<link rel="modulepreload" href="/_app/pages/blog/__layout.svelte-31d9bad1.js">
+		<link rel="modulepreload" href="/_app/chunks/theme-603e4f0f.js">
+		<link rel="modulepreload" href="/_app/pages/blog/octoprint-timelapse-using-external-camera.md-cfb87260.js">
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-dc15bae0.css">
+		<link rel="stylesheet" href="/_app/assets/LinkButton-2dca7f9b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/blog/__layout.svelte-3a42a522.css">
+		<link rel="stylesheet" href="/_app/assets/pages/blog/octoprint-timelapse-using-external-camera.md-daedca94.css">
+
+		<script type="module">
+			import { start } from "/_app/start-9c372ffb.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-83329d77.js"),
+						import("/_app/pages/blog/__layout.svelte-31d9bad1.js"),
+						import("/_app/pages/blog/octoprint-timelapse-using-external-camera.md-cfb87260.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/blog/octoprint-timelapse-using-external-camera",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="purple"><header class="large svelte-gahdru"><ul class="circles svelte-1u7wkmb"><li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+	<li class="svelte-1u7wkmb"></li>
+</ul>
+	<nav class="svelte-gahdru"><a href="/" class="svelte-gahdru">Kasper Laursen</a>
+<div><a href="/blog" class="svelte-du4noo  light">Blog</a>
+	<a href="/about" class="svelte-du4noo  light">About</a></div></nav>
+</header>
+	<main class="svelte-1son41p">
+<article class="svelte-1racb31">
+
+
+<h1>Using an external camera in octoprint</h1>
+<p>Even tho I have a pi cam connected to my octopint, I wanted to make higher quality timelapses.<br>
+To make that happen, I found my old Canon EOS 600D.<br>
+We are going to be using gphoto2 to interface with the camera, <a href="http://www.gphoto.org/doc/remote/" rel="nofollow">you can find a list of supproted cameras here</a>.</p>
+<section class="svelte-vrp5t2"><div class="svelte-vrp5t2"><h3>Octolapse + DSLR</h3>
+        <video controls class="svelte-vrp5t2"><source src="/posts/octoprint-timelapse-using-external-camera/after.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video></div>
+    <div class="svelte-vrp5t2"><h3>Default + pi camera</h3>
+        <video controls class="svelte-vrp5t2"><source src="/posts/octoprint-timelapse-using-external-camera/before.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video></div></section>
+<p>Okay lets get started on setting it all up. </p>
+<p>I assume that you already have octoprint running on a PI connected to your 3D printer.<br>
+If not, follow the <a href="https://octoprint.org/download/" rel="nofollow">official documentation</a>. </p>
+<p>We need to connect to the pi via ssh to install gphoto2.<br>
+If you did not enable ssh on installation you can do so by adding an empty file named <code>ssh</code> (no extnesion) to to root of the SD Card.</p>
+<p>Now open a terminal and follow the steps below.</p>
+<p>Connect to the PI via ssh</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">ssh pi@&#123;your octopi ip&#125;</code><!-- HTML_TAG_END --></pre>
+<p>(Default pasword is <code>raspberry</code>)</p>
+<p>Install gphoto2</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">sudo apt-get install gphoto2</code><!-- HTML_TAG_END --></pre>
+<p>Now connect the camera to the PI and test gphoto2</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">gphoto2 --auto-detect</code><!-- HTML_TAG_END --></pre>
+<small>You should see your camera model listed</small>
+<p>Take a picture</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">gphoto2 --auto-detect --set-config capturetarget=1 --trigger-capture</code><!-- HTML_TAG_END --></pre>
+<p>Navigate to the script folder</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">cd scripts</code><!-- HTML_TAG_END --></pre>
+<p>Create a new script to take a picture</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">sudo nano snapshot.sh</code><!-- HTML_TAG_END --></pre>
+<p>Add the following to the file:</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">#!/bin/sh
+gphoto2 --auto-detect --set-config capturetarget=1 --trigger-capture</code><!-- HTML_TAG_END --></pre>
+<p>press <code>crtl+O</code> then <code>enter</code> and then <code>ctrl+x</code> and <code>enter</code> to save the file.</p>
+<p>Add execute permission to the script</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">chmod +x snapshot.sh</code><!-- HTML_TAG_END --></pre>
+<p>Now try to take a picture using the script</p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">./snapshot.sh</code><!-- HTML_TAG_END --></pre>
+<p>Now lets setup octolapse in octoprint to use the script.<br>
+If you have not already, install the octolapse plugin through the plugin manager in the octoprint UI.
+After installing configure your printer (or use a preset).</p>
+<p>Go to <code>octolapse</code> -&gt; <code>cameras</code> -&gt; <code>Add profile</code>.<br>
+Under <code>Camera Type</code> select <code>External Camera - Script</code>.<br>
+Then under <code>External Camera Setup - Script</code> add the path to the snapshot.sh file  </p>
+<pre class="language-undefined"><!-- HTML_TAG_START --><code class="language-undefined">/home/pi/scripts/snapshot.sh</code><!-- HTML_TAG_END --></pre>
+<p>Use the test button to make sure it works.</p>
+<p>Scroll to the bottom of the window and save the settings.</p>
+<p>Under the octolaps tab you can now select your new camera and it will take a picture on each layer!</p>
+</article></main>
+</div>
+
+
+
+	
+</div>
+	</body>
+</html>
