@@ -3,6 +3,17 @@
 	export let nodeSize;
 	export let onMouseEnter;
 	export let onMouseLeave;
+
+	const colorClass = {
+		gray: 'bg-gray-600',
+		red: 'bg-red-600',
+		yellow: 'bg-yellow-600',
+		green: 'bg-green-600',
+		blue: 'bg-blue-600',
+		indigo: 'bg-indigo-600',
+		purple: 'bg-purple-600',
+		pink: 'bg-pink-600'
+	};
 </script>
 
 {#each nodes as node}
@@ -14,9 +25,8 @@
 		y={node.y ? node.y - nodeSize / 2 : 0}
 		height={nodeSize}
 		width={nodeSize}
-		class="circle"
+		class={`circle ${colorClass[node.data.color] ?? 'bg-gray-600'}`}
 		class:highlight={node.data.highlight}
-		style={`--element-bg-color: var(${node.data.color ?? '--gray'})`}
 	>
 		<div>
 			<a href={node.data.url}>
@@ -26,44 +36,29 @@
 	</foreignObject>
 {/each}
 
-<style>
+<style lang="postcss">
 	.circle {
-		border: 2px solid #fff;
-		background-color: var(--element-bg-color);
-		border-radius: 50%;
 		cursor: grab;
-		transition: all 0.2s;
+		@apply border-2 border-white rounded-full transition-all duration-200;
 	}
 	.circle:hover,
 	.circle.highlight {
-		border: 2px solid var(--dark-gray);
+		@apply border-2 border-gray-600;
 	}
 
 	.circle > div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		width: 100%;
-		height: 100%;
-
-		text-align: center;
-		color: #fff;
-		font-size: 0.7em;
+		@apply flex items-center justify-center w-full h-full text-center text-white text-xs;
 	}
 
 	a {
-		text-decoration: none;
-		color: #fff;
-		transition: all 0.2s;
+		@apply no-underline text-white transition duration-200;
 	}
 
-    a[href]{
-		cursor: pointer;
-    }
+	a[href] {
+		@apply cursor-pointer;
+	}
 
 	a[href]:hover {
-		text-decoration: underline;
-		font-weight: bold;
+		@apply underline font-bold;
 	}
 </style>

@@ -7,30 +7,24 @@
 
 <a {href} class:accent class:light><slot /></a>
 
-<style>
+<style lang="postcss">
 	a {
-		text-decoration: none;
-		color: var(--accent-color);
-
-		padding: 0.75em;
-		border-radius: 0.25em;
-		transition: all 0.3s ease-in-out;
+		@apply no-underline bg-transparent p-3 rounded transition duration-300 ease-in-out;
 	}
 
 	a:hover {
-		background-color: rgba(0, 0, 0, 0.1);
+		@apply bg-gray-900 bg-opacity-10;
 	}
 
 	a.light {
-		color: var(--accent-bg-text-color);
+		@apply text-gray-50;
 	}
 
 	a.accent {
-		color: var(--accent-bg-text-color);
-		background-color: var(--accent-bg-color);
+		@apply bg-blue-500 text-white;
 	}
 
 	a.accent:hover {
-		opacity: 0.8;
+		@apply opacity-80;
 	}
 </style>

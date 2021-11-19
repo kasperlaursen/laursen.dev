@@ -20,41 +20,23 @@
 	*,
 	*::before,
 	*::after {
-		box-sizing: border-box;
+		@apply box-border;
 	}
 
 	div {
-		font-size: 0.9em;
+		@apply text-sm;
 	}
 
 	select {
-		appearance: none;
-
-		background-color: transparent;
-		border: none;
-		margin: 0;
-		font-family: inherit;
-		font-size: inherit;
-		cursor: inherit;
-		line-height: inherit;
-
-		color: var(--accent-bg-text-color);
-		background-color: var(--accent-bg-color);
-
-		padding: 0.75em;
-		border-radius: 0.25em;
-		transition: all 0.3s ease-in-out;
-
-		cursor: pointer;
+		@apply cursor-pointer transition-all duration-300 ease-in-out rounded p-3 bg-blue-600 text-white m-0 border-0 appearance-none;
 	}
 
 	option {
-		text-transform: capitalize;
+		@apply capitalize;
 	}
 
 	select:hover,
 	select:focus {
-		outline: none;
-		opacity: 0.8;
+		@apply opacity-80 outline-none;
 	}
 </style>

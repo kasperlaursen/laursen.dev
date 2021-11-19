@@ -31,42 +31,29 @@
 	{/each}
 </section>
 
-<style>
+<style lang="postcss">
 	section {
-		position: relative;
-		margin-top: 70px;
+		@apply mt-16 relative;
 	}
 	.labels {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		display: flex;
+		@apply absolute w-full h-full flex;
 	}
 	.label {
-		position: relative;
+		@apply relative;
 	}
 	.label span {
-		position: absolute;
-		transform: rotate(-45deg);
-		margin-top: -40px;
+		@apply absolute transform -rotate-45 -mt-10;
 	}
 
 	.label::after {
 		content: '';
-		position: absolute;
-		height: 100%;
-		border-right: 1px solid rgba(0,0,0,.1);
-		left: 7px;
-        z-index: -1;
+		z-index: -1;
+		@apply absolute h-full border-r border-black border-opacity-10 left-2;
 	}
 	.bar {
-		width: 100%;
-		margin: 0.5rem;
+		@apply w-full m-2;
 	}
 	.fill {
-		background-color: var(--gray);
-		color: var(--accent-bg-text-color);
-		text-align: center;
-		border-radius: 2px;
+		@apply bg-gray-500 text-white rounded-md text-center;
 	}
 </style>

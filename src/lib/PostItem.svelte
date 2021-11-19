@@ -6,24 +6,19 @@
 <div>
 	<a href="/blog/{post.slug}">
 		<div>
-			<h3>{post.title}</h3>
+			<h2>{post.title}</h2>
 			<p>{post.teaser}</p>
 			<p class="cta">Read full post</p>
 		</div>
-		{#if post.image }
-			<img src={post.image} alt={post.title}/>
+		{#if post.image}
+			<img src={post.image} alt={post.title} />
 		{/if}
 	</a>
 </div>
 
-<style>
+<style lang="postcss">
 	a {
-		text-decoration: none;
-		color: var(--text-color);
-		transition: color 0.2s ease-in-out;
-		display: flex;
-		justify-content: space-between;
-		gap:  1em;
+		@apply no-underline transition duration-200 ease-in-out flex justify-between gap-4;
 	}
 
 	img {
@@ -32,19 +27,18 @@
 	}
 
 	div {
-		margin-bottom: 1.5em;
+		@apply mb-6;
 	}
 
 	p,
-	h3 {
-		margin: 0.5em 0;
+	h2 {
+		@apply my-2;
 	}
 	a:hover {
-		color: var(--accent-color);
+		@apply text-blue-600;
 	}
 
 	.cta {
-		color: var(--accent-color);
-		font-style: italic;
+		@apply text-blue-600 italic;
 	}
 </style>

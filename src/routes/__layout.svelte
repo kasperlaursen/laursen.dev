@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../../static/global.css';
+	import '../app.css';
 	import Nav from '$lib/Nav.svelte';
 	import { themeColor } from '$lib/themeStore';
 </script>
@@ -11,10 +11,11 @@
 	</main>
 </div>
 
-<style>
+<style lang="postcss">
+	:global(body) {
+		@apply bg-gray-100;
+	}
 	main {
-		margin: auto;
-		max-width: var(--content-width);
-		padding: 1rem;
+		@apply max-w-5xl mx-auto p-4;
 	}
 </style>

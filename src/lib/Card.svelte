@@ -1,21 +1,20 @@
 <script lang="ts">
-	export let spacing: 'none' | 'small' | 'medium' | 'large' = 'large';
-    const spacingMap = {
-        none: "0",
-        small: "1em",
-        medium: "2em",
-        large: "3em",
-    }
+	export let spacing: 'none' | 'small' | 'medium' | 'large' = 'large';
+	const spacingMap = {
+		none: '0',
+		small: '1em',
+		medium: '2em',
+		large: '3em'
+	};
 </script>
 
 <div style={`--spacing: ${spacingMap[spacing]}`}>
 	<slot />
 </div>
 
-<style>
+<style lang="postcss">
 	div {
-		background-color: var(--bg-color-2);
-		border-radius: 0.5em;
+		@apply bg-gray-50 rounded;
 		padding: var(--spacing);
 	}
 </style>

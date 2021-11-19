@@ -7,21 +7,12 @@
 	<AnimatedHomeAutomationBackground />
 </a>
 
-<style>
+<style lang="postcss">
 	a {
-		text-decoration: none;
-
-		background-color: var(--blue);
-		color: var(--accent-bg-text-color);
-		border-radius: 0.5em;
-		margin-top: -2.5em;
-		position: relative;
-		padding: 2em;
-
-		height: 12em;
+		@apply no-underline bg-blue-500 text-white rounded p-8 h-48 overflow-hidden relative;
 	}
 
 	h3 {
-		margin: 0;
+		@apply mt-0;
 	}
 </style>

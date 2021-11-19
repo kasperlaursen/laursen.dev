@@ -6,7 +6,7 @@ const config = {
 	},
 
 	layout: {
-		boxed: './src/routes/_layouts/_boxed.svelte'
+		post: './src/routes/_layouts/_post.svelte'
 	},
 
 	remarkPlugins: [],

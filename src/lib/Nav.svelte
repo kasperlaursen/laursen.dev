@@ -15,47 +15,29 @@
 	</nav>
 </header>
 
-<style>
+<style lang="postcss">
 	a {
-		text-decoration: none;
-		color: var(--accent-bg-text-color);
+		@apply no-underline text-white;
 	}
 
 	nav a:first-of-type {
-		font-size: 1.2em;
-		letter-spacing: -0.5px;
 		font-family: 'Courier New', Courier, monospace;
+		@apply text-xl tracking-tighter m-0;
 	}
 
 	nav {
-		position: absolute;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		padding: 2em 0;
-		width: var(--content-width);
-		max-width: calc(100% - 2em);
-		flex-grow: 1;
+		@apply max-w-5xl w-full absolute flex justify-between items-center flex-grow;
 	}
 
 	header.small {
-		height: 5.3em;
+		@apply h-20 overflow-hidden;
 	}
 
 	header.large {
-		height: 10em;
+		@apply h-40;
 	}
 
 	header {
-		position: relative;
-
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-
-		background-color: var(--accent-bg-color);
-		transition: all 0.3s;
+		@apply relative flex justify-center items-center transition duration-300 ease-in-out bg-blue-500;
 	}
 </style>

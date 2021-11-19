@@ -10,6 +10,7 @@
 </script>
 
 <script lang="ts">
+	import BoxedLayout from '../_layouts/_boxed.svelte';
 	import CaregorySelector from '$lib/CaregorySelector.svelte';
 	import PostItem from '$lib/PostItem.svelte';
 	export let posts: Post[];
@@ -25,20 +26,21 @@
 	<title>Blog | Kasper Laursen</title>
 </svelte:head>
 
-<div>
-	<h2 class="heading">Blog</h2>
-	<CaregorySelector {categories} bind:selectedCategory />
-</div>
-{#each filteredPosts as post}
-	<PostItem {post} />
-{/each}
+<BoxedLayout>
+	<div>
+		<h3>Blog</h3>
+		<CaregorySelector {categories} bind:selectedCategory />
+	</div>
+	{#each filteredPosts as post}
+		<PostItem {post} />
+	{/each}
+</BoxedLayout>
 
-<style>
+<style lang="postcss">
 	div {
-		display: flex;
-		justify-content: space-between;
+		@apply flex justify-between mb-6;
 	}
-	h2 {
-		margin-top: 0;
+	h3 {
+		@apply mt-0;
 	}
 </style>

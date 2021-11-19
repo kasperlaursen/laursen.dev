@@ -26,7 +26,7 @@
 <Theme color="red" header="large" />
 
 <section class="posts">
-	<h2 class="heading">Recent Posts:</h2>
+	<h3 class="heading">Recent Posts:</h3>
 	{#each posts.slice(0, postLimit) as post}
 		<PostItem {post} />
 	{/each}
@@ -38,21 +38,15 @@
 	<HomeAutomationCard />
 </section>
 
-<style>
-	h2 {
+<style lang="postcss">
+	h3 {
 		margin-top: 0;
+		@apply mb-4;
 	}
 	section.posts {
-		background-color: var(--bg-color-2);
-		border-radius: 0.5em;
-		margin-top: -2.5em;
-		position: relative;
-		padding: 3em;
+		@apply bg-gray-50 rounded -mt-8 relative p-9;
 	}
 	section.subpages {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2em;
-		margin: 4.5em 0;
+		@apply grid grid-cols-2 gap-8 my-16;
 	}
 </style>

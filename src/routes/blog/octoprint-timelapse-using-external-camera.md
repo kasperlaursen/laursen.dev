@@ -2,11 +2,13 @@
 title: 'How to use an external camera in octoprint'
 teaser: 'Setting up octoprint on a Raspberry pi to use an external DSLR for making timelapses'
 date: '2021-12-11'
+layout: 'post'
 image: '/posts/octoprint-timelapse-using-external-camera/thumb.jpg'
 categories: ['Making', 'Other']
 ---
 
 <svelte:head>
+
 <title>{title} | Kasper Laursen</title>
 </svelte:head>
 
@@ -15,6 +17,7 @@ categories: ['Making', 'Other']
 Even tho I have a pi cam connected to my octopint, I wanted to make higher quality timelapses.  
 To make that happen, I found my old Canon EOS 600D.  
 We are going to be using gphoto2 to interface with the camera, [you can find a list of supproted cameras here](http://www.gphoto.org/doc/remote/).
+
 <section>
     <div>
         <h3>Octolapse + DSLR</h3>
@@ -32,10 +35,10 @@ We are going to be using gphoto2 to interface with the camera, [you can find a l
     </div>
 </section>
 
-Okay lets get started on setting it all up. 
+Okay lets get started on setting it all up.
 
-I assume that you already have octoprint running on a PI connected to your 3D printer.   
-If not, follow the [official documentation](https://octoprint.org/download/). 
+I assume that you already have octoprint running on a PI connected to your 3D printer.  
+If not, follow the [official documentation](https://octoprint.org/download/).
 
 We need to connect to the pi via ssh to install gphoto2.  
 If you did not enable ssh on installation you can do so by adding an empty file named `ssh` (no extnesion) to to root of the SD Card.
@@ -43,38 +46,47 @@ If you did not enable ssh on installation you can do so by adding an empty file 
 Now open a terminal and follow the steps below.
 
 Connect to the PI via ssh
+
 ```
 ssh pi@{your octopi ip}
 ```
+
 (Default pasword is `raspberry`)
 
 Install gphoto2
+
 ```
 sudo apt-get install gphoto2
 ```
 
 Now connect the camera to the PI and test gphoto2
+
 ```
 gphoto2 --auto-detect
 ```
+
 <small>You should see your camera model listed</small>
 
 Take a picture
+
 ```
 gphoto2 --auto-detect --set-config capturetarget=1 --trigger-capture
 ```
 
 Navigate to the script folder
+
 ```
 cd scripts
 ```
 
 Create a new script to take a picture
+
 ```
 sudo nano snapshot.sh
 ```
 
 Add the following to the file:
+
 ```
 #!/bin/sh
 gphoto2 --auto-detect --set-config capturetarget=1 --trigger-capture
@@ -83,11 +95,13 @@ gphoto2 --auto-detect --set-config capturetarget=1 --trigger-capture
 press `crtl+O` then `enter` and then `ctrl+x` and `enter` to save the file.
 
 Add execute permission to the script
+
 ```
 chmod +x snapshot.sh
 ```
 
 Now try to take a picture using the script
+
 ```
 ./snapshot.sh
 ```
@@ -98,7 +112,8 @@ After installing configure your printer (or use a preset).
 
 Go to `octolapse` -> `cameras` -> `Add profile`.  
 Under `Camera Type` select `External Camera - Script`.  
-Then under `External Camera Setup - Script` add the path to the snapshot.sh file  
+Then under `External Camera Setup - Script` add the path to the snapshot.sh file
+
 ```
 /home/pi/scripts/snapshot.sh
 ```

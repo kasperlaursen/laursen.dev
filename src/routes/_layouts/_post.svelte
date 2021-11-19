@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<article>
+<article class="prose">
 	<slot />
 </article>
 
