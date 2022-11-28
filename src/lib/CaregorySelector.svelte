@@ -28,7 +28,7 @@
 	}
 
 	select {
-		@apply cursor-pointer transition-all duration-300 ease-in-out rounded p-3 bg-blue-600 text-white m-0 border-0 appearance-none;
+		@apply cursor-pointer transition-all duration-300 ease-in-out rounded p-3 bg-primary text-white m-0 border-0 appearance-none;
 	}
 
 	option {

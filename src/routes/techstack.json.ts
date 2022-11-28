@@ -10,45 +10,60 @@ export const get = async () => {
 		status: 200,
 		body: [
 			{
-				name: "Svelte",
+				name: 'Svelte',
 				from: 2020,
 				to: TODAY
 			},
 			{
-				name: "React",
+				name: 'Nx',
+				from: 2021,
+				to: TODAY
+			},
+			{
+				name: 'Tailwindcss',
+				from: 2020,
+				to: TODAY
+			},
+			{
+				name: 'React',
 				from: 2018,
 				to: TODAY
 			},
 			{
-				name: "Typescript",
+				name: 'Styled Components',
+				from: 2018,
+				to: TODAY
+			},
+			{
+				name: 'Typescript',
 				from: 2015,
 				to: TODAY
 			},
 			{
-				name: "Angular 2+",
+				name: 'Angular 2+',
 				from: 2015,
 				to: 2019
 			},
 			{
-				name: "Node",
+				name: 'Node',
 				from: 2016,
 				to: TODAY
 			},
 			{
-				name: "jQuery",
+				name: 'jQuery',
 				from: 2010,
 				to: 2016
 			},
 			{
-				name: "PHP",
+				name: 'PHP',
 				from: 2010,
 				to: 2016
 			},
 			{
-				name: "HTML & CSS",
+				name: 'HTML & CSS',
 				from: 2009,
 				to: TODAY
-			},
+			}
 		]
-	}
+	};
 };

@@ -13,7 +13,7 @@
 <script lang="ts">
 	import PostItem from '$lib/PostItem.svelte';
 	import HomeAutomationCard from '$lib/homeautomation/HomeAutomationCard.svelte';
-	import Theme from '$lib/theme.svelte';
+	import Theme from '$lib/Theme.svelte';
 	import LinkButton from '$lib/ui-components/LinkButton.svelte';
 	export let posts: Post[];
 	const postLimit = 3;

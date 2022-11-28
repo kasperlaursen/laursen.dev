@@ -21,7 +21,7 @@
 	}
 
 	a.accent {
-		@apply bg-blue-500 text-white;
+		@apply bg-primary text-white;
 	}
 
 	a.accent:hover {

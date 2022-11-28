@@ -13,6 +13,7 @@
 	import BoxedLayout from '../_layouts/_boxed.svelte';
 	import CaregorySelector from '$lib/CaregorySelector.svelte';
 	import PostItem from '$lib/PostItem.svelte';
+	import Theme from '$lib/Theme.svelte';
 	export let posts: Post[];
 	export let categories: Category[];
 
@@ -21,6 +22,8 @@
 		? posts.filter((post) => post.categories.some((category) => category === selectedCategory))
 		: posts;
 </script>
+
+<Theme color="gray" header="large" />
 
 <svelte:head>
 	<title>Blog | Kasper Laursen</title>

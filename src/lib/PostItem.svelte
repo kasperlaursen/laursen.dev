@@ -35,10 +35,10 @@
 		@apply my-2;
 	}
 	a:hover {
-		@apply text-blue-600;
+		@apply text-primary;
 	}
 
 	.cta {
-		@apply text-blue-600 italic;
+		@apply text-primary italic;
 	}
 </style>

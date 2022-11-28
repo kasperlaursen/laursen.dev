@@ -38,6 +38,6 @@
 	}
 
 	header {
-		@apply relative flex justify-center items-center transition duration-300 ease-in-out bg-blue-500;
+		@apply relative flex justify-center items-center transition duration-300 ease-in-out bg-primary;
 	}
 </style>

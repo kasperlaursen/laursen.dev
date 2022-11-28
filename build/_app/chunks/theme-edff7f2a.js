@@ -1,0 +1,1 @@
+import{S as e,i as r,s as o}from"./vendor-4c629592.js";import{t as s,h as t}from"./themeStore-362f672c.js";function a(e,r,o){let{color:a}=r,{header:c}=r;return s.set(a),t.set(c),e.$$set=e=>{"color"in e&&o(0,a=e.color),"header"in e&&o(1,c=e.header)},[a,c]}class c extends e{constructor(e){super(),r(this,e,a,null,o,{color:0,header:1})}}export{c as T};

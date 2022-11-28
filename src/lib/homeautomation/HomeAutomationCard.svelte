@@ -9,7 +9,7 @@
 
 <style lang="postcss">
 	a {
-		@apply no-underline bg-blue-500 text-white rounded p-8 h-48 overflow-hidden relative;
+		@apply no-underline bg-blue-400 text-white rounded p-8 h-48 overflow-hidden relative;
 	}
 
 	h3 {
