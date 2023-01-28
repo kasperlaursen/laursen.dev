@@ -4,7 +4,7 @@ teaser: 'Setting up octoprint on a Raspberry pi to use an external DSLR for maki
 date: '2021-12-11'
 layout: 'post'
 image: '/posts/octoprint-timelapse-using-external-camera/thumb.jpg'
-categories: ['Making', 'Other']
+categories: ['home_automation', '3d_print']
 ---
 
 <svelte:head>
