@@ -4,7 +4,7 @@ teaser: 'These cheap temperature sensors are great! I designed a wall mount to a
 date: '2021-09-01'
 image: '/posts/3D-printed-temperature-sensor-mount/thumb.jpg'
 layout: 'post'
-categories: ['Making', 'Other']
+categories: ['3d_print']
 ---
 
 <svelte:head>

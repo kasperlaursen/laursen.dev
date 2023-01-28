@@ -1,70 +1,27 @@
-/* Write your global styles here, in PostCSS syntax */
+@import "./colors.css";
+@import "./themes.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--red: #f25757;
-	--blue: #36b4eb;
-	--dark-blue: #3060c7;
-	--teal: #0a928b;
-	--green: #6bc93c;
-	--dark-green: #559e31;
-	--purple: #c24fa7;
-	--yellow: #edd30c;
-	--orange: #ed8b0c;
-	--gray: #798897;
-	--dark-gray: #2f4858;
-
-	--text-color: rgba(31, 41, 55, 1);
-	--bg-color: #f3f3f3;
-	--bg-color-2: #fff;
-	--accent-bg-text-color: #fff;
-
-	--content-width: 1000px;
-
-	--accent-color: var(--blue);
-	--accent-bg-color: var(--accent-color);
+body:not(.prose),
+html:not(.prose) {
+  @apply text-base text-text-DEFUALT;
 }
 
-.blue {
-	--accent-color: var(--blue);
-	--accent-bg-color: var(--accent-color);
+h1:not(.prose) {
+  @apply font-bold text-xl text-text-strong;
 }
 
-.red {
-	--accent-color: var(--red);
-	--accent-bg-color: var(--accent-color);
-}
-.green {
-	--accent-color: var(--green);
-	--accent-bg-color: var(--accent-color);
-}
-.purple {
-	--accent-color: var(--purple);
-	--accent-bg-color: var(--accent-color);
-}
-.yellow {
-	--accent-color: var(--yellow);
-	--accent-bg-color: var(--accent-color);
-}
-.gray {
-	--accent-color: var(--gray);
-	--accent-bg-color: var(--accent-color);
-}
-.dark-gray {
-	--accent-color: var(--dark-gray);
-	--accent-bg-color: var(--accent-color);
+h2:not(.prose) {
+  @apply font-medium text-lg text-text-strong;
 }
 
-@layer base {
-	h1 {
-		@apply text-2xl my-6;
-	}
-	h2 {
-		@apply text-xl my-4;
-	}
-	h3 {
-		@apply text-lg font-bold  my-2;
-	}
+h3:not(.prose) {
+  @apply font-medium text-base text-text-strong;
+}
+
+p:not(.prose) {
+  @apply font-light text-base;
 }
