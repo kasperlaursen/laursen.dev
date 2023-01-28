@@ -8,6 +8,10 @@
   const { posts, total } = data;
 </script>
 
+<svelte:head>
+  <title>Home | Kasper Laursen</title>
+</svelte:head>
+
 <main class="grid gap-6">
   <Card class="grid gap-6">
     <h3>Latest posts</h3>

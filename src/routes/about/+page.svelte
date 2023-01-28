@@ -9,6 +9,10 @@
   const { jobs } = data;
 </script>
 
+<svelte:head>
+  <title>CV | Kasper Laursen</title>
+</svelte:head>
+
 <main class="grid gap-6 pb-10">
   <Card
     class="flex gap-6 place-items-center justify-center flex-wrap sm:flex-nowrap w-auto"

@@ -27,6 +27,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Blog | Kasper Laursen</title>
+</svelte:head>
+
 <Card class="grid gap-6">
   <div class="flex justify-between">
     <h3>Posts</h3>

@@ -8,8 +8,7 @@ categories: ['home_automation', '3d_print']
 ---
 
 <svelte:head>
-
-<title>{title} | Kasper Laursen</title>
+    <title>{title} | Kasper Laursen</title>
 </svelte:head>
 
 # Using an external camera in octoprint
