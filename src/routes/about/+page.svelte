@@ -48,7 +48,7 @@
     <div class="grid sm:grid-cols-[220px,1fr] gap-6 group">
       <h3>🖨️ 3D Printing</h3>
       <p>
-        3D Printing and modeling has been part of my toolbox for many years! I
+        3D Printing and modelling has been part of my toolbox for many years! I
         find it extremely satisfying to solve real life problems using this
         tool!
       </p>
