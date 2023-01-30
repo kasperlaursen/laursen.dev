@@ -7,7 +7,9 @@
 
 body:not(.prose),
 html:not(.prose) {
-  @apply text-base text-text-DEFUALT;
+  @apply text-base text-text-DEFUALT grid grid-rows-[auto,1fr];
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 h1:not(.prose) {
