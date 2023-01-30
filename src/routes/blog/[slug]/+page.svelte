@@ -6,7 +6,7 @@
   const { title, date, content: Content } = data;
 </script>
 
-<Card class="prose max-w-none prose-sm p-10 dark:prose-invert">
+<Card class="prose max-w-none p-10 dark:prose-invert">
   <Content />
   <p class="font-bold">Published: {date}</p>
 </Card>
