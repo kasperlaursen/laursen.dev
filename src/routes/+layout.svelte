@@ -5,7 +5,7 @@
 
 <Header />
 <main id="app" class="bg-surface-2">
-  <section class="container mx-auto sm:-mt-4 max-w-screen-lg">
+  <section class="container mx-auto sm:-mt-8 max-w-screen-lg">
     <slot />
   </section>
 </main>
