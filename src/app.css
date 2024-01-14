@@ -27,3 +27,8 @@ h3:not(.prose) {
 p:not(.prose) {
   @apply font-light text-base;
 }
+
+@page {
+  size: auto;
+  margin: 25mm 10mm 5mm 10mm;
+}

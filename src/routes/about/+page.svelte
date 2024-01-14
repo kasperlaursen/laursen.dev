@@ -72,17 +72,17 @@
       <h3>🥓 Smoke oven</h3>
     </div>
   </Card>
-  <a id="#technologies"><h1>👨‍💻 Technologies</h1></a>
+  <a id="#technologies"  class="break-before-page"><h1>👨‍💻 Technologies</h1></a>
   <div
     class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] justify-center gap-6 group"
   >
     {#each technologies as tech, index}
-      <Card >
+      <Card>
         <Technology {...tech} />
       </Card>
     {/each}
   </div>
-  <a id="#experience">
+  <a id="#experience" class="break-before-page">
     <h1>💼 Experience</h1>
   </a>
   <Card class="grid gap-6">
@@ -90,7 +90,7 @@
       <Job {...job} />
     {/each}
   </Card>
-  <a id="#education"><h1>🎓 Education</h1></a>
+  <a id="#education" class="break-before-page"><h1>🎓 Education</h1></a>
   <Card class="grid gap-6">
     <Job
       company="KEA - Copenhagen"
