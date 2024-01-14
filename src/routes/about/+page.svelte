@@ -25,7 +25,7 @@
     <div>
       <h1>Hi! I'm Kasper Laursen 👋</h1>
       <p>
-        I'm a Web Developer living in Denmark 🇩🇰 working as a Software Engineer.
+        I'm a Web Developer living in Denmark 🇩🇰 working as a Senior Software Engineer.
         <br />
         I specialize in frontend application development using modern javascript
         frameworks.
@@ -37,7 +37,7 @@
     <div class="grid sm:grid-cols-[220px,minmax(0,1fr)] gap-6 group">
       <h3>🤖 Home Automation</h3>
       <p>
-        I spend my spare time on Home Automation projects arround the house. <Link
+        I spend my spare time on home automation projects around the house. <Link
           class="!p-0"
           href="https://www.home-assistant.io">Home Assistant</Link
         > is my weapon of choice and if it did not require the use of a soldering
@@ -48,19 +48,14 @@
     <div class="grid sm:grid-cols-[220px,1fr] gap-6 group">
       <h3>🖨️ 3D Printing</h3>
       <p>
-        3D Printing and modelling has been part of my toolbox for many years! I
-        find it extremely satisfying to solve real life problems using this
-        tool!
+        3D printing and modeling have been part of my toolbox for many years! I find it extremely satisfying to solve real-life problems using this tool.
       </p>
     </div>
 
     <div class="grid sm:grid-cols-[220px,1fr] gap-6 group">
       <h3>👨‍💻 Web development</h3>
       <p>
-        To me web development is as much a hobby as it is my job. When I am done
-        working for the day, I often spend the evenling building personal web
-        projects. These projects enables me to explore new techonlogies that I
-        might not get to use during my day job.
+        To me, web development is as much a hobby as it is my job. When I am done working for the day, I often spend the evening building personal web projects. These projects enable me to explore new technologies that I might not get to use during my day job.
       </p>
     </div>
     <div class="flex gap-6 flex-wrap justify-center pt-6">
