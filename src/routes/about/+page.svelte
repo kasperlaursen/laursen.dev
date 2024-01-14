@@ -2,11 +2,12 @@
   import Me from "./me.jpg?w=400&webp";
   import Card from "../../lib/components/card.svelte";
   import Job from "$lib/ui/job.svelte";
+  import Technology from "$lib/ui/technology.svelte";
   import type { PageData } from "./$types";
   import Link from "$lib/components/link.svelte";
 
   export let data: PageData;
-  const { jobs } = data;
+  const { jobs, technologies } = data;
 </script>
 
 <svelte:head>
@@ -18,14 +19,15 @@
     class="flex gap-6 place-items-center justify-center flex-wrap sm:flex-nowrap w-auto"
   >
     <img
-      src="{Me}"
+      src={Me}
       alt="Kasper laursen"
       class="w-40 rounded-full border-4 border-secondary-200 shadow"
     />
     <div>
       <h1>Hi! I'm Kasper Laursen 👋</h1>
       <p>
-        I'm a Web Developer living in Denmark 🇩🇰 working as a Senior Software Engineer.
+        I'm a Web Developer living in Denmark 🇩🇰 working as a Senior Software
+        Engineer.
         <br />
         I specialize in frontend application development using modern javascript
         frameworks.
@@ -48,14 +50,19 @@
     <div class="grid sm:grid-cols-[220px,1fr] gap-6 group">
       <h3>🖨️ 3D Printing</h3>
       <p>
-        3D printing and modeling have been part of my toolbox for many years! I find it extremely satisfying to solve real-life problems using this tool.
+        3D printing and modeling have been part of my toolbox for many years! I
+        find it extremely satisfying to solve real-life problems using this
+        tool.
       </p>
     </div>
 
     <div class="grid sm:grid-cols-[220px,1fr] gap-6 group">
       <h3>👨‍💻 Web development</h3>
       <p>
-        To me, web development is as much a hobby as it is my job. When I am done working for the day, I often spend the evening building personal web projects. These projects enable me to explore new technologies that I might not get to use during my day job.
+        To me, web development is as much a hobby as it is my job. When I am
+        done working for the day, I often spend the evening building personal
+        web projects. These projects enable me to explore new technologies that
+        I might not get to use during my day job.
       </p>
     </div>
     <div class="flex gap-6 flex-wrap justify-center pt-6">
@@ -63,10 +70,18 @@
       <h3>🌶️ Chili Growing</h3>
       <h3>🎣 Fishing</h3>
       <h3>🥓 Smoke oven</h3>
-      <h3>📷 Drone Photography</h3>
-      <h3>🏚️ Home renovation</h3>
     </div>
   </Card>
+  <a id="#technologies"><h1>👨‍💻 Technologies</h1></a>
+  <div
+    class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] justify-center gap-6 group"
+  >
+    {#each technologies as tech, index}
+      <Card >
+        <Technology {...tech} />
+      </Card>
+    {/each}
+  </div>
   <a id="#experience">
     <h1>💼 Experience</h1>
   </a>
